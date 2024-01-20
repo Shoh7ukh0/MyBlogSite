@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SITE_ID = 1
 
 # Application definition
 
@@ -38,7 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'blog.apps.BlogConfig'
+    'blog.apps.BlogConfig',
+
+    'taggit',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
 ]
 
 MIDDLEWARE = [
@@ -123,3 +128,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Elektron pochta serveri konfiguratsiyasi
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'shohruxoralov9@gmail.com'
+EMAIL_HOST_PASSWORD = 'sevhvgwgaqbyzyrb'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
