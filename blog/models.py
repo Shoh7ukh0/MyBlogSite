@@ -4,6 +4,7 @@ from django.db.models.query import QuerySet
 from django.utils import timezone
 from django.contrib.auth.models import User
 from taggit.managers import TaggableManager
+from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 

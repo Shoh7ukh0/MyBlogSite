@@ -1,4 +1,5 @@
 {% extends "blog/base.html" %}
+{% load i18n %}
 {% load blog_tags %}
 {% load static %}
 {% block title %}{{ post.title }}{% endblock %}
@@ -10,12 +11,12 @@
         <div class="intro-content display-table">
             <div class="table-cell">
                 <div class="container">
-                    <h2 class="intro-title mb-4">Blog Details</h2>
+                    <h2 class="intro-title mb-4">{% trans "Blog Details" %}</h2>
                     <ol class="breadcrumb d-flex justify-content-center">
                         <li class="breadcrumb-item">
-                            <a href="{% url 'blog:post_list' %}">Home</a>
+                            <a href="{% url 'blog:post_list' %}">{% trans "Home" %}</a>
                         </li>
-                        <li class="breadcrumb-item active">Data</li>
+                        <li class="breadcrumb-item active">{% trans "Data" %}</li>
                     </ol>
                 </div>
             </div>

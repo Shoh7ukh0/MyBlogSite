@@ -20,7 +20,7 @@ msgstr ""
 
 #: Config/settings.py:118
 msgid "English"
-msgstr ""
+msgstr "Ingliz"
 
 #: Config/settings.py:119
 msgid "Uzbek"

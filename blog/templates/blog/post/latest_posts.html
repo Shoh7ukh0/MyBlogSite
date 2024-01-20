@@ -1,5 +1,6 @@
+{% load i18n %}
 <div class="widget-sidebar">
-    <h5 class="sidebar-title">Latest Post</h5>
+    <h5 class="sidebar-title">{% trans "Latest Post" %}</h5>
     <div class="sidebar-content">
         {% for post in latest_posts %}
             <ul class="list-sidebar">
@@ -8,7 +9,7 @@
                 </li>
             </ul>
         {% empty %}
-            There are no latest posts yet.
+            {% trans "There are no latest posts yet" %}.
         {% endfor %}
     </div>
 </div>

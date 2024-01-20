@@ -1,7 +1,8 @@
+{% load i18n %}
 <div class="form-comments">
     <div class="title-box-2">
         <h3 class="title-left">
-            Add Comment
+            {% trans "Add Comment" %}
         </h3>
     </div>
     <form action="{% url 'blog:post_comment' post.id %}" method="post" class="form-mf">
