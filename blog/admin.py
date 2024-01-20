@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import MyAbout, Post, Comment
+from .models import MyAbout, Post, Comment, Contact
 
 # Register your models here.
 @admin.register(MyAbout)
@@ -21,3 +21,7 @@ class CommentAdmin(admin.ModelAdmin):
     list_display = ['name', 'email', 'post', 'created', 'active']
     list_filter = ['active', 'created', 'updated']
     search_fields = ['name', 'email', 'body']
+
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ['location']

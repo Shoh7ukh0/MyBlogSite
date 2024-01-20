@@ -67,6 +67,16 @@ class Post(models.Model):
                                                  self.publish.day,
                                                  self.slug])
     
+class Contact(models.Model):
+    info = models.TextField()
+    location = models.CharField(max_length=250)
+    facebook = models.URLField()
+    instagram = models.URLField()
+    telegram = models.URLField()
+
+    def __str__(self):
+        return self.location
+    
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
