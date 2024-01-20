@@ -1,5 +1,6 @@
 {% extends "blog/base.html" %}
 {% load blog_tags %}
+{% load static %}
 {% block title %}{{ post.title }}{% endblock %}
 {% block content %}
 
@@ -12,10 +13,7 @@
                     <h2 class="intro-title mb-4">Blog Details</h2>
                     <ol class="breadcrumb d-flex justify-content-center">
                         <li class="breadcrumb-item">
-                            <a href="#">Home</a>
-                        </li>
-                        <li class="breadcrumb-item">
-                            <a href="#">Library</a>
+                            <a href="{% url 'blog:post_list' %}">Home</a>
                         </li>
                         <li class="breadcrumb-item active">Data</li>
                     </ol>
@@ -32,7 +30,7 @@
                 <div class="col-md-8">
                     <div class="post-box">
                         <div class="post-thumb">
-                            <img src="../../static/img/post-1.jpg" class="img-fluid" alt="">
+                            <img src="{{ post.images.url }}" class="img-fluid" alt="{{ post.title }}">
                         </div>
                         <div class="post-meta">
                             <h1 class="article-title">{{ post.title }}</h1>
@@ -62,15 +60,18 @@
                             </blockquote> -->
                         </div>
                     </div>
-                    {% for comment in comments %}
-                        <div class="box-comments">
+                    
+                    <div class="box-comments">
+                        {% with comments.count as total_comments %}
                             <div class="title-box-2">
-                                <h4 class="title-comments title-left">Comments ({{ forloop.counter }})</h4>
+                                <h4 class="title-comments title-left">Comments ({{ total_comments }})</h4>
                             </div>
+                        {% endwith %}
+                        {% for comment in comments %}
                             <ul class="list-comments">
                                 <li>
                                     <div class="comment-avatar">
-                                        <img src="../../../static/img/testimonial-2.jpg" alt="">
+                                        <img src="{% static 'img/testimonial-2.jpg' %}" alt="">
                                     </div>
                                     <div class="comment-details">
                                         <h4 class="comment-author">{{ comment.name }}</h4>
@@ -81,61 +82,39 @@
                                     </div>
                                 </li>
                             </ul>
-                        </div>
-                    {% endfor %}
+                        {% endfor %}
+                    </div>
+                    
                     {% include "blog/post/includes/comment_form.html" %}
                 </div>
                 <div class="col-md-4">
-                    <div class="widget-sidebar sidebar-search">
-                        <h5 class="sidebar-title">Search</h5>
-                            <div class="sidebar-content">
-                            <form>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-secondary btn-search" type="button">
-                                            <span class="ion-android-search"></span>
-                                        </button>
-                                    </span>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
                     <div class="widget-sidebar">
                         <h5 class="sidebar-title">Recent Post</h5>
                         <div class="sidebar-content">
-                            <ul class="list-sidebar">
-                                <li>
-                                    <a href="#">Atque placeat maiores.</a>
-                                </li>
-                                <li>
-                                    <a href="#">Lorem ipsum dolor sit amet consectetur</a>
-                                </li>
-                                <li>
-                                    <a href="#">Nam quo autem exercitationem.</a>
-                                </li>
-                                <li>
-                                    <a href="#">Atque placeat maiores nam quo autem</a>
-                                </li>
-                                <li>
-                                    <a href="#">Nam quo autem exercitationem.</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="widget-sidebar">
-                        <h5 class="sidebar-title">Similar posts</h5>
-                        {% for post in similar_posts %}
-                            <div class="sidebar-content">
+                            {% for post in latest_posts %}
                                 <ul class="list-sidebar">
                                     <li>
                                         <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
                                     </li>
                                 </ul>
-                            </div>
-                        {% empty %}
-                            There are no similar posts yet.
-                        {% endfor %}
+                            {% empty %}
+                                There are no latest posts yet.
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="widget-sidebar">
+                        <h5 class="sidebar-title">Similar posts</h5>
+                        <div class="sidebar-content">
+                            {% for post in similar_posts %}
+                            <ul class="list-sidebar">
+                                <li>
+                                    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                                </li>
+                            </ul>
+                            {% empty %}
+                                There are no similar posts yet.
+                            {% endfor %}
+                        </div>
                     </div>
                     <div class="widget-sidebar widget-tags">
                         <h5 class="sidebar-title">Tags</h5>

@@ -43,7 +43,7 @@ def post_list(request, tag_slug=None):
         'about': about,
         'posts': posts,
         'tag': tag,
-        'contacts': contacts
+        'contacts': contacts,
     }
 
     return render(request, 'blog/post/list.html', context)
@@ -68,12 +68,12 @@ def post_detail(request, year, month, day, post):
                                         .exclude(id=post.id)
     similar_posts = similar_posts.annotate(same_tags=Count('tags')) \
                                         .order_by('-same_tags','-publish')[:4]
-    
+            
     context = {
         'post': post, 
         'comments': comments, 
         'form': form, 
-        'similar_posts': similar_posts
+        'similar_posts': similar_posts,
     }
 
     return render(request, 'blog/post/detail.html', context)
@@ -114,15 +114,17 @@ def post_share(request, post_id):
 def post_comment(request, post_id):
     post = get_object_or_404(Post, id=post_id, status=Post.Status.PUBLISHED)
     comment = None
+
     # Izoh e'lon qilindi
     form = CommentForm(data=request.POST)
+    
     if form.is_valid():
         # Ma'lumotlar bazasida saqlamasdan Comment sinfi ob'ektini yarating
-        comment = form.save(comment=False)
+        comment = form.save(commit=False)  # Use commit=False to get the instance without saving to the database
         # Fikr bildirish uchun post tayinlang
         comment.post = post
         # Fikrni ma'lumotlar bazasiga saqlang
-    comment.save()
+        comment.save()
 
     context = {
         'post': post, 
@@ -131,24 +133,3 @@ def post_comment(request, post_id):
     }
 
     return render(request, 'blog/post/comment.html', context)
-
-def post_search(request):
-    form = SearchForm()
-    query = None
-    results = []
-    
-    if 'query' in request.GET:
-        form = SearchForm(request.GET)
-        if form.is_valid():
-            query = form.cleaned_data['query']
-            results = Post.published.annotate(
-                similarity=TrigramSimilarity('title', query),
-                ).filter(similarity__gt=0.1).order_by('-similarity')
-            
-    context = {
-        'form': form, 
-        'query': query,
-        'results': results
-    }
-
-    return render(request, 'blog/post/search.html', context)
