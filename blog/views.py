@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import Http404
+# from django.http import Http404
 from .models import Post
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.views.generic import ListView
+# from django.views.generic import ListView
 from .forms import EmailPostForm, CommentForm, SearchForm
 from django.core.mail import send_mail
 from django.views.decorators.http import require_POST
