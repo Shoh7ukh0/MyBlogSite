@@ -1,6 +1,5 @@
 {% extends "blog/base.html" %}
 {% load blog_tags %}
-{% load i18n %}
 {% block title %}{% trans "My Blog" %}{% endblock %}
 
 {% block content %}
@@ -11,7 +10,7 @@
         <div class="table-cell">
             <div class="container">
             <!--<p class="display-6 color-d">Hello, world!</p>-->
-            <h1 class="intro-title mb-4">{% trans "I am Shohrukh Uralov" %}</h1>
+            <h1 class="intro-title mb-4">I am Shohrukh Uralov" %}</h1>
             <p class="intro-subtitle"><span class="text-slider-items">CEO DevFolio,Web Developer,Web Designer,Frontend Developer, Backend Developer,Graphic Designer</span><strong class="text-slider"></strong></p>
             <!-- <p class="pt-3"><a class="btn btn-primary btn js-scroll px-4" href="#about" role="button">Learn More</a></p> -->
             </div>
@@ -35,15 +34,15 @@
                                         </div>
                                         <div class="col-sm-6 col-md-7">
                                             <div class="about-info">
-                                                <p><span class="title-s">{% trans "Name" %}: </span> <span>{{ a.name }}</span></p>
-                                                <p><span class="title-s">{% trans "Profile" %}: </span> <span>{{ a.work }}</span></p>
-                                                <p><span class="title-s">{% trans "Email" %}: </span> <span>{{ a.email }}</span></p>
-                                                <p><span class="title-s">{% trans "Phone" %}: </span> <span>+{{ a.phone }}</span></p>
+                                                <p><span class="title-s">Name: </span> <span>{{ a.name }}</span></p>
+                                                <p><span class="title-s">Profile: </span> <span>{{ a.work }}</span></p>
+                                                <p><span class="title-s">Email: </span> <span>{{ a.email }}</span></p>
+                                                <p><span class="title-s">Phone: </span> <span>+{{ a.phone }}</span></p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="skill-mf">
-                                        <p class="title-s">{% trans "Skill" %}</p>
+                                        <p class="title-s">Skill</p>
                                         <span>{{ a.skils }}</span> <span class="pull-right">85%</span>
                                         <div class="progress">
                                             <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0"
@@ -85,7 +84,7 @@
                                     <div class="about-me pt-4 pt-md-0">
                                         <div class="title-box-2">
                                             <h5 class="title-left">
-                                                {% trans "{% trans "Skill" %}About me" %}
+                                                About me
                                             </h5>
                                         </div>
                                         <p class="lead">
@@ -129,7 +128,7 @@
                         </div>
                         <div class="counter-num">
                             <p class="counter">5</p>
-                            <span class="counter-text">{% trans "WORKS COMPLETED" %}</span>
+                            <span class="counter-text">WORKS COMPLETED</span>
                         </div>
                     </div>
                 </div>
@@ -140,7 +139,7 @@
                         </div>
                         <div class="counter-num">
                             <p class="counter">1</p>
-                            <span class="counter-text">{% trans "YEARS OF EXPERIENCE" %}</span>
+                            <span class="counter-text">YEARS OF EXPERIENCE</span>
                         </div>
                     </div>
                 </div>
@@ -151,7 +150,7 @@
                         </div>
                         <div class="counter-num">
                             <p class="counter">10</p>
-                            <span class="counter-text">{% trans "TOTAL CLIENTS" %}</span>
+                            <span class="counter-text">TOTAL CLIENTS</span>
                         </div>
                     </div>
                 </div>
@@ -162,7 +161,7 @@
                         </div>
                         <div class="counter-num">
                             <p class="counter">2</p>
-                            <span class="counter-text">{% trans "AWARD WON" %}</span>
+                            <span class="counter-text">AWARD WON</span>
                         </div>
                     </div>
                 </div>
@@ -177,10 +176,10 @@
             <div class="col-sm-12">
                 <div class="title-box text-center">
                     <h3 class="title-a">
-                        {% trans "Portfolio" %}
+                        Portfolio
                     </h3>
                     <p class="subtitle-a">
-                        {% trans "Lorem ipsum, dolor sit amet consectetur adipisicing elit" %}.
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                     </p>
                     <div class="line-mf"></div>
                 </div>
@@ -196,9 +195,9 @@
                             <div class="work-content">
                                 <div class="row">
                                 <div class="col-sm-8">
-                                    <h2 class="w-title">{% trans "Lorem impsum dolor" %}</h2>
+                                    <h2 class="w-title">Lorem impsum dolor</h2>
                                     <div class="w-more">
-                                    <span class="w-ctegory">{% trans "Web Design" %}</span> / <span class="w-date">18 Sep. 2018</span>
+                                    <span class="w-ctegory">Web Design</span> / <span class="w-date">18 Sep. 2018</span>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
@@ -220,9 +219,9 @@
                             <div class="work-content">
                                 <div class="row">
                                 <div class="col-sm-8">
-                                    <h2 class="w-title">{% trans "Loreda Cuno Nere" %}</h2>
+                                    <h2 class="w-title">Loreda Cuno Nere</h2>
                                     <div class="w-more">
-                                    <span class="w-ctegory">{% trans "Web Design" %}</span> / <span class="w-date">18 Sep. 2018</span>
+                                    <span class="w-ctegory">Web Design</span> / <span class="w-date">18 Sep. 2018</span>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
@@ -244,9 +243,9 @@
                             <div class="work-content">
                                 <div class="row">
                                 <div class="col-sm-8">
-                                    <h2 class="w-title">{% trans "Mavrito Lana Dere" %}</h2>
+                                    <h2 class="w-title">Mavrito Lana Dere</h2>
                                     <div class="w-more">
-                                    <span class="w-ctegory">{% trans "Web Design" %}</span> / <span class="w-date">18 Sep. 2018</span>
+                                    <span class="w-ctegory">Web Design</span> / <span class="w-date">18 Sep. 2018</span>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
@@ -272,10 +271,10 @@
                 <div class="col-sm-12">
                     <div class="title-box text-center">
                         <h3 class="title-a">
-                            {% trans "Blog" %}
+                            Blog
                         </h3>
                         <p class="subtitle-a">
-                            {% trans "Lorem ipsum, dolor sit amet consectetur adipisicing elit" %}.
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                         </p>
                         <div class="line-mf"></div>
                     </div>

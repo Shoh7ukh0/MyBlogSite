@@ -1,12 +1,12 @@
 {% extends "blog/base.html" %}
 {% load i18n %}
-{% block title %}{% trans "Add a comment" %}{% endblock %}
+{% block title %}Add a comment{% endblock %}
 
 {% block content %}
    <div style="text-align: center; margin-top: 15em; margin-bottom: 8.8em;" class="container">
       {% if comment %}
-         <h2>{% trans "Your comment has been added" %}.</h2>
-         <p><a href="{{ post.get_absolute_url }}">{% trans "Back to the post" %}</a></p>
+         <h2>Your comment has been added.</h2>
+         <p><a href="{{ post.get_absolute_url }}">Back to the post</a></p>
       {% else %}
          {% include "blog/post/includes/comment_form.html" %}
       {% endif %}
