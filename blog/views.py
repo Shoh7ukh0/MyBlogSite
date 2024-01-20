@@ -46,24 +46,24 @@ def post_list(request, tag_slug=None):
 
 
 def post_detail(request, year, month, day, post):
-    post = get_object_or_404(Post, status=Post.Status.PUBLISHED, 
+    post = get_object_or_404(Post, status=Post.Status.PUBLISHED,
                             slug=post,
                             publish__year=year,
                             publish__month=month,
                             publish__day=day
     )
-
-    # ushbu post uchun faol sharhlar ro'yxati
+    
+    # Ushbu post uchun faol sharhlar ro'yxati
     comments = post.comments.filter(active=True)
-    # foydalanuvchi sharhlar shakli
+    # Foydalanuvchi sharhlar shakli
     form = CommentForm()
 
     # Shunga o'xshash postlar ro'yxati
-    post_tags_ids = post.tag.values_list('id', flat=True)
+    post_tags_ids = post.tags.values_list('id', flat=True)
     similar_posts = Post.published.filter(tags__in=post_tags_ids) \
                                         .exclude(id=post.id)
     similar_posts = similar_posts.annotate(same_tags=Count('tags')) \
-                                        .order_by('-same_tags', '-publish')[:4]
+                                        .order_by('-same_tags','-publish')[:4]
     
     context = {
         'post': post, 
