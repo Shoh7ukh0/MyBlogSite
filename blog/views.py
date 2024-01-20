@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 # from django.http import Http404
-from .models import Post
+from .models import Post, MyAbout
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # from django.views.generic import ListView
 from .forms import EmailPostForm, CommentForm, SearchForm
@@ -15,6 +15,7 @@ from django.contrib.postgres.search import TrigramSimilarity
 
 
 def post_list(request, tag_slug=None):
+    about = MyAbout.objects.all()
     post_list = Post.published.all()
     tag = None
     if tag_slug:
@@ -38,6 +39,7 @@ def post_list(request, tag_slug=None):
         posts = paginator.page(paginator.num_pages)
 
     context = {
+        'about': about,
         'posts': posts,
         'tag': tag,
     }

@@ -1,7 +1,10 @@
 from django.contrib import admin
-from .models import Post, Comment
+from .models import MyAbout, Post, Comment
 
 # Register your models here.
+@admin.register(MyAbout)
+class MyAboutAdmin(admin.ModelAdmin):
+    list_display = ['name', 'work', 'email', 'phone']
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):

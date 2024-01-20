@@ -7,6 +7,28 @@ from taggit.managers import TaggableManager
 
 # Create your models here.
 
+class MyAbout(models.Model):
+    name = models.CharField(max_length=250)
+    work = models.CharField(max_length=250)
+    body = models.TextField()
+    email = models.EmailField()
+    phone = models.IntegerField(default='+998 99 410 7441', blank=True, null=True)
+    image = models.ImageField(upload_to='images/')
+    skils = models.CharField(max_length=100, blank=True, null=True)
+    skils_1 = models.CharField(max_length=100, blank=True, null=True)
+    skils_2 = models.CharField(max_length=100, blank=True, null=True)
+    skils_3 = models.CharField(max_length=100, blank=True, null=True)
+    skils_4 = models.CharField(max_length=100, blank=True, null=True)
+    skils_5 = models.CharField(max_length=100, blank=True, null=True)
+    skils_6 = models.CharField(max_length=100, blank=True, null=True)
+    skils_7 = models.CharField(max_length=100, blank=True, null=True)
+    skils_8 = models.CharField(max_length=100, blank=True, null=True)
+    skils_9 = models.CharField(max_length=100, blank=True, null=True)
+    skils_10 = models.CharField(max_length=100, blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+
 class PublishedManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(status=Post.Status.PUBLISHED)
