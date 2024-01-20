@@ -2,38 +2,156 @@
 {% load blog_tags %}
 {% block title %}{{ post.title }}{% endblock %}
 {% block content %}
-    <h1>{{ post.title }}</h1>
-    <p class="date">
-        Published {{ post.publish }} by {{ post.author }}
-    </p>
-    {{ post.body|markdown }}
-    <p>
-        <a href="{% url 'blog:post_share' post.id %}">Share this post</a>
-    </p>
-    <h2>Similar posts</h2>
-    {% for post in similar_posts %}
-    <p>
-        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-    </p>
-    {% empty %}
-        There are no similar posts yet.
-    {% endfor %}
 
-    {% with comments.count as total_comments %}
-        <h2>
-        {{ total_comments }} comment{{ total_comments|pluralize }}
-        </h2>
-    {% endwith %}
-    {% for comment in comments %}
-    <div class="comment">
-        <p class="info">
-        Comment {{ forloop.counter }} by {{ comment.name }}
-        {{ comment.created }}
-        </p>
-        {{ comment.body|linebreaks }}
+    <!--/ Intro Skew Star /-->
+    <div class="intro intro-single route bg-image" style="background-image: url(../../../static/img/overlay-bg.jpg)">
+        <div class="overlay-mf"></div>
+        <div class="intro-content display-table">
+            <div class="table-cell">
+                <div class="container">
+                    <h2 class="intro-title mb-4">Blog Details</h2>
+                    <ol class="breadcrumb d-flex justify-content-center">
+                        <li class="breadcrumb-item">
+                            <a href="#">Home</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="#">Library</a>
+                        </li>
+                        <li class="breadcrumb-item active">Data</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
     </div>
-    {% empty %}
-        <p>There are no comments.</p>
-    {% endfor %}
-    {% include "blog/post/includes/comment_form.html" %}
+    <!--/ Intro Skew End /-->
+
+    <!--/ Section Blog-Single Star /-->
+    <section class="blog-wrapper sect-pt4" id="blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="post-box">
+                        <div class="post-thumb">
+                            <img src="../../static/img/post-1.jpg" class="img-fluid" alt="">
+                        </div>
+                        <div class="post-meta">
+                            <h1 class="article-title">{{ post.title }}</h1>
+                            <ul>
+                                <li>
+                                    <span class="ion-ios-person"></span>
+                                    <a href="#">{{ post.author }}</a>
+                                </li>
+                                <li>
+                                    <span class="ion-pricetag"></span>
+                                    <a href="#">Web Design</a>
+                                </li>
+                                {% with comments.count as total_comments %}
+                                    <li>
+                                        <span class="ion-chatbox"></span>
+                                        <a href="#">{{ total_comments }}</a>
+                                    </li>
+                                {% endwith %}
+                            </ul>
+                        </div>
+                        <div class="article-content">
+                            <p>
+                                {{ post.body|markdown }}
+                            </p>
+                            <!-- <blockquote class="blockquote">
+                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                            </blockquote> -->
+                        </div>
+                    </div>
+                    {% for comment in comments %}
+                        <div class="box-comments">
+                            <div class="title-box-2">
+                                <h4 class="title-comments title-left">Comments ({{ forloop.counter }})</h4>
+                            </div>
+                            <ul class="list-comments">
+                                <li>
+                                    <div class="comment-avatar">
+                                        <img src="../../../static/img/testimonial-2.jpg" alt="">
+                                    </div>
+                                    <div class="comment-details">
+                                        <h4 class="comment-author">{{ comment.name }}</h4>
+                                        <span>{{ comment.created }}</span>
+                                        <p>
+                                            {{ comment.body|linebreaks }}
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    {% endfor %}
+                    {% include "blog/post/includes/comment_form.html" %}
+                </div>
+                <div class="col-md-4">
+                    <div class="widget-sidebar sidebar-search">
+                        <h5 class="sidebar-title">Search</h5>
+                            <div class="sidebar-content">
+                            <form>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-secondary btn-search" type="button">
+                                            <span class="ion-android-search"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="widget-sidebar">
+                        <h5 class="sidebar-title">Recent Post</h5>
+                        <div class="sidebar-content">
+                            <ul class="list-sidebar">
+                                <li>
+                                    <a href="#">Atque placeat maiores.</a>
+                                </li>
+                                <li>
+                                    <a href="#">Lorem ipsum dolor sit amet consectetur</a>
+                                </li>
+                                <li>
+                                    <a href="#">Nam quo autem exercitationem.</a>
+                                </li>
+                                <li>
+                                    <a href="#">Atque placeat maiores nam quo autem</a>
+                                </li>
+                                <li>
+                                    <a href="#">Nam quo autem exercitationem.</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="widget-sidebar">
+                        <h5 class="sidebar-title">Similar posts</h5>
+                        {% for post in similar_posts %}
+                            <div class="sidebar-content">
+                                <ul class="list-sidebar">
+                                    <li>
+                                        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        {% empty %}
+                            There are no similar posts yet.
+                        {% endfor %}
+                    </div>
+                    <div class="widget-sidebar widget-tags">
+                        <h5 class="sidebar-title">Tags</h5>
+                        {% for tag in post.tags.all %}
+                            <div class="sidebar-content">
+                                <ul>
+                                    <li>
+                                        <a href="{% url 'blog:post_list_by_tag' tag.slug %}">{{ tag.name }}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/ Section Blog-Single End /-->
 {% endblock %}

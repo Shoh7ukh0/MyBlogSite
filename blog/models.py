@@ -41,6 +41,7 @@ class Post(models.Model):
     
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250)
+    images = models.ImageField(upload_to='post/images/')
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_posts')
     body = models.TextField()
     publish = models.DateTimeField(default=timezone.now)
