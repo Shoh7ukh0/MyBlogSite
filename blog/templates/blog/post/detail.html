@@ -4,108 +4,110 @@
 {% block title %}{{ post.title }}{% endblock %}
 {% block content %}
 
-    <!--/ Intro Skew Star /-->
-    <div class="intro intro-single route bg-image" style="background-image: url(../../../static/img/overlay-bg.jpg)">
+    <div class="hero hero-single route bg-image" style="background-image: url(../../../static/assets/img/overlay-bg.jpg)">
         <div class="overlay-mf"></div>
-        <div class="intro-content display-table">
+        <div class="hero-content display-table">
             <div class="table-cell">
                 <div class="container">
-                    <h2 class="intro-title mb-4">Blog Details</h2>
+                    <h2 class="hero-title mb-4">Blog Details</h2>
                     <ol class="breadcrumb d-flex justify-content-center">
                         <li class="breadcrumb-item">
                             <a href="{% url 'blog:post_list' %}">Home</a>
                         </li>
-                        <li class="breadcrumb-item active">Data</li>
+                        <li class="breadcrumb-item">
+                            <a href="#">Blog</a>
+                        </li>
                     </ol>
                 </div>
             </div>
         </div>
     </div>
-    <!--/ Intro Skew End /-->
 
-    <!--/ Section Blog-Single Star /-->
-    <section class="blog-wrapper sect-pt4" id="blog">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="post-box">
-                        <div class="post-thumb">
-                            <img src="{{ post.images.url }}" class="img-fluid" alt="{{ post.title }}">
-                        </div>
-                        <div class="post-meta">
-                            <h1 class="article-title">{{ post.title }}</h1>
-                            <ul>
-                                <li>
-                                    <span class="ion-ios-person"></span>
-                                    <a href="#">{{ post.author }}</a>
-                                </li>
-                                {% for tag in post.tags.all %}
-                                    <li>
-                                        <span class="ion-pricetag"></span>
-                                        <a href="{% url 'blog:post_list_by_tag' tag.slug %}">{{ tag.name }}</a>
-                                    </li>
-                                {% endfor %}
-                                {% with comments.count as total_comments %}
-                                    <li>
-                                        <span class="ion-chatbox"></span>
-                                        <a href="#">{{ total_comments }}</a>
-                                    </li>
-                                {% endwith %}
-                            </ul>
-                        </div>
-                        <div class="article-content">
-                            <p>
-                                {{ post.body|markdown }}
-                            </p>
-                            <!-- <blockquote class="blockquote">
-                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                            </blockquote> -->
-                        </div>
-                    </div>
-                    
-                    <div class="box-comments">
-                        {% with comments.count as total_comments %}
-                            <div class="title-box-2">
-                                <h4 class="title-comments title-left">Comments ({{ total_comments }})</h4>
+    <main id="main">
+        <!--/ Section Blog-Single Star /-->
+        <section class="blog-wrapper sect-pt4" id="blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="post-box">
+                            <div class="post-thumb">
+                                <img src="{{ post.images.url }}" class="img-fluid" alt="{{ post.title }}">
                             </div>
-                        {% endwith %}
-                        {% for comment in comments %}
-                            <ul class="list-comments">
-                                <li>
-                                    <div class="comment-avatar">
-                                        <img src="{% static 'img/testimonial-2.jpg' %}" alt="">
-                                    </div>
-                                    <div class="comment-details">
-                                        <h4 class="comment-author">{{ comment.name }}</h4>
-                                        <span>{{ comment.created }}</span>
-                                        <p>
-                                            {{ comment.body|linebreaks }}
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
-                        {% endfor %}
-                    </div>
-                    
-                    {% include "blog/post/includes/comment_form.html" %}
-                </div>
-                <div class="col-md-4">
-                    {% show_latest_posts 3 %}
-                    <div class="widget-sidebar widget-tags">
-                        <h5 class="sidebar-title">Tags</h5>
-                        {% for tag in post.tags.all %}
-                            <div class="sidebar-content">
+                            <div class="post-meta">
+                                <h1 class="article-title">{{ post.title }}</h1>
                                 <ul>
                                     <li>
-                                        <a href="{% url 'blog:post_list_by_tag' tag.slug %}">{{ tag.name }}</a>
+                                        <span class="ion-ios-person"></span>
+                                        <a href="#">{{ post.author }}</a>
                                     </li>
+                                    {% for tag in post.tags.all %}
+                                        <li>
+                                            <span class="ion-pricetag"></span>
+                                            <a href="{% url 'blog:post_list_by_tag' tag.slug %}">{{ tag.name }}</a>
+                                        </li>
+                                    {% endfor %}
+                                    {% with comments.count as total_comments %}
+                                        <li>
+                                            <span class="ion-chatbox"></span>
+                                            <a href="#">{{ total_comments }}</a>
+                                        </li>
+                                    {% endwith %}
                                 </ul>
                             </div>
-                        {% endfor %}
+                            <div class="article-content">
+                                <p>
+                                    {{ post.body|markdown }}
+                                </p>
+                                <!-- <blockquote class="blockquote">
+                                    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                                </blockquote> -->
+                            </div>
+                        </div>
+                        
+                        <div class="box-comments">
+                            {% with comments.count as total_comments %}
+                                <div class="title-box-2">
+                                    <h4 class="title-comments title-left">Comments ({{ total_comments }})</h4>
+                                </div>
+                            {% endwith %}
+                            {% for comment in comments %}
+                                <ul class="list-comments">
+                                    <li>
+                                        <div class="comment-avatar">
+                                            <img src="{% static 'img/testimonial-2.jpg' %}" alt="">
+                                        </div>
+                                        <div class="comment-details">
+                                            <h4 class="comment-author">{{ comment.name }}</h4>
+                                            <span>{{ comment.created }}</span>
+                                            <p>
+                                                {{ comment.body|linebreaks }}
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            {% endfor %}
+                        </div>
+                        
+                        {% include "blog/post/includes/comment_form.html" %}
+                    </div>
+                    <div class="col-md-4">
+                        {% show_latest_posts 3 %}
+                        <div class="widget-sidebar widget-tags">
+                            <h5 class="sidebar-title">Tags</h5>
+                            {% for tag in post.tags.all %}
+                                <div class="sidebar-content">
+                                    <ul>
+                                        <li>
+                                            <a href="{% url 'blog:post_list_by_tag' tag.slug %}">{{ tag.name }}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!--/ Section Blog-Single End /-->
+        </section>
+        <!--/ Section Blog-Single End /-->
+    </main>
 {% endblock %}

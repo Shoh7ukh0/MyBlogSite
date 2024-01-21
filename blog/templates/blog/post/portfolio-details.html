@@ -1,7 +1,7 @@
 {% extends "blog/base.html" %}
 {% load blog_tags %}
 {% load static %}
-{% block title %}My Portfolio Details{% endblock %}
+{% block title %}Portfolio Details{% endblock %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +20,7 @@
           <h2 class="hero-title mb-4">Portfolio Details</h2>
           <ol class="breadcrumb d-flex justify-content-center">
             <li class="breadcrumb-item">
-              <a href="#">Home</a>
+              <a href="{% url 'blog:post_list' %}">Home</a>
             </li>
             <li class="breadcrumb-item active">Portfolio Details</li>
           </ol>
@@ -65,7 +65,7 @@
                 <li><strong>Category</strong>: {{ p.info }}</li>
                 <li><strong>Client</strong>: {{ p.client }}</li>
                 <li><strong>Project date</strong>: {{ p.project_date }}</li>
-                <li><strong>Project URL</strong>: <a href="#">{{ p.url }}</a></li>
+                <li><strong>Project URL</strong>: <a href="{{ p.url }}">{{ p.url }}</a></li>
               </ul>
             </div>
             <div class="portfolio-description">

@@ -1,6 +1,6 @@
 {% extends "blog/base.html" %}
 {% load blog_tags %}
-{% block title %}My Blog{% endblock %}
+{% block title %}Shohrukh Blog{% endblock %}
 
 {% block content %}
     <!-- ======= Hero Section ======= -->
@@ -12,7 +12,7 @@
                     <!--<p class="display-6 color-d">Hello, world!</p>-->
                     <h1 class="hero-title mb-4">I am Shohrukh</h1>
                     <p class="hero-subtitle"><span class="typed" data-typed-items="Designer, Developer, Freelancer, Backend Developer"></span></p>
-                    <!-- <p class="pt-3"><a class="btn btn-primary btn js-scroll px-4" href="#about" role="button">Learn More</a></p> -->
+                    <p class="pt-3"><a class="btn btn-primary btn js-scroll px-4" href="#!" id="downloadButton" role="button">CV Download</a></p>
                 </div>
             </div>
         </div>
@@ -95,8 +95,8 @@
                                             <div class="col-md-6">
                                                 <div class="more-info">
                                                     <ul class="list-ico">
-                                                        <li><span class="ion-ios-location"></span> {{ contact.location }}</li>
-                                                        <li><span class="ion-ios-telephone"></span> {{ a.phone }}</li>
+                                                        <li><i class="bi bi-geo-alt-fill"></i> {{ contact.location }}</li>
+                                                        <li><i class="bi bi-phone-fill"></i> {{ a.phone }}</li>
                                                     </ul>
                                                 </div>
                                                 <div class="socials">
@@ -117,17 +117,18 @@
             </div>
         </section>
 
-        <div class="section-counter paralax-mf bg-image" style="background-image: url(../../static/img/counters-bg.jpg)">
+        <!-- ======= Counter Section ======= -->
+        <div class="section-counter paralax-mf bg-image" style="background-image: url(../../static/assets/img/counters-bg.jpg)">
             <div class="overlay-mf"></div>
-            <div class="container">
-            <div class="row">
+            <div class="container position-relative">
+                <div class="row">
                     <div class="col-sm-3 col-lg-3">
-                        <div class="counter-box">
+                        <div class="counter-box counter-box pt-4 pt-md-0">
                             <div class="counter-ico">
-                                <span class="ico-circle"><i class="ion-checkmark-round"></i></span>
+                                <span class="ico-circle"><i class="bi bi-check"></i></span>
                             </div>
                             <div class="counter-num">
-                                <p class="counter">5</p>
+                                <p data-purecounter-start="0" data-purecounter-end="10" data-purecounter-duration="1" class="counter purecounter"></p>
                                 <span class="counter-text">WORKS COMPLETED</span>
                             </div>
                         </div>
@@ -135,10 +136,10 @@
                     <div class="col-sm-3 col-lg-3">
                         <div class="counter-box pt-4 pt-md-0">
                             <div class="counter-ico">
-                                <span class="ico-circle"><i class="ion-ios-calendar-outline"></i></span>
+                                <span class="ico-circle"><i class="bi bi-journal-richtext"></i></span>
                             </div>
                             <div class="counter-num">
-                                <p class="counter">1</p>
+                                <p data-purecounter-start="0" data-purecounter-end="1" data-purecounter-duration="1" class="counter purecounter"></p>
                                 <span class="counter-text">YEARS OF EXPERIENCE</span>
                             </div>
                         </div>
@@ -146,10 +147,10 @@
                     <div class="col-sm-3 col-lg-3">
                         <div class="counter-box pt-4 pt-md-0">
                             <div class="counter-ico">
-                                <span class="ico-circle"><i class="ion-ios-people"></i></span>
+                                <span class="ico-circle"><i class="bi bi-people"></i></span>
                             </div>
                             <div class="counter-num">
-                                <p class="counter">10</p>
+                                <p data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="1" class="counter purecounter"></p>
                                 <span class="counter-text">TOTAL CLIENTS</span>
                             </div>
                         </div>
@@ -157,17 +158,17 @@
                     <div class="col-sm-3 col-lg-3">
                         <div class="counter-box pt-4 pt-md-0">
                             <div class="counter-ico">
-                                <span class="ico-circle"><i class="ion-ribbon-a"></i></span>
+                                <span class="ico-circle"><i class="bi bi-award"></i></span>
                             </div>
                             <div class="counter-num">
-                                <p class="counter">2</p>
+                                <p data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="1" class="counter purecounter"></p>
                                 <span class="counter-text">AWARD WON</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div><!-- End Counter Section -->
 
         <!--/ Section Portfolio Star /-->
         <section id="work" class="portfolio-mf sect-pt4 route">
@@ -203,7 +204,7 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="w-like">
-                                            <a href="{{ port.get_absolute_url }}"><span class="ion-ios-plus-outline"></span></a>
+                                            <a href="{{ port.get_absolute_url }}"><i class="bi bi-plus-circle"></i></a>
                                         </div>
                                     </div>
                                     </div>
