@@ -105,6 +105,7 @@ class Portfolio(models.Model):
     url = models.URLField()
     name = models.CharField(max_length=250)
     info = models.CharField(max_length=250)
+    project_date = models.DateField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
