@@ -5,101 +5,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shohrukh {% block title %}{% endblock %}</title>
+    <title>{% block title %}{% endblock %}</title>
+
     <!-- Favicons -->
-    <link href="{% static 'img/favicon.png' %}" rel="icon">
-    <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+    <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+    <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
 
-    <!-- Bootstrap CSS File -->
-    <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
 
-    <!-- Libraries CSS Files -->
-    <link href="{% static 'lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
-    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
-    <link href="{% static 'lib/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
-    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
-    <link href="{% static 'lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
-
-    <!-- Main Stylesheet File -->
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
 </head>
 <body id="page-top">
-    <!--/ Nav Star /-->
-    <nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand js-scroll" href="#page-top">Shohrukh DevFolio</a>
-            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
-                aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <div class="navbar-collapse collapse justify-content-end" id="navbarDefault">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll active" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll" href="#work">Work</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll" href="#blog">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll" href="https://t.me/shoh7ukh_Python">Channel</a>
-                    </li>
+   <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+
+            <h1 class="logo"><a href="#!">DevFolio</a></h1>
+            
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+                    <li><a class="nav-link scrollto" href="#about">About</a></li>
+                    <li><a class="nav-link scrollto " href="#work">Work</a></li>
+                    <li><a class="nav-link scrollto " href="#blog">Blog</a></li>
                 </ul>
-            </div>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
         </div>
-    </nav>
-    <!--/ Nav End /-->
+    </header><!-- End Header -->
 
     {% block content %}
 
     {% endblock %}
 
-    <!--/ Section Contact-Footer Star /-->
-    <section class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url(../../static/img/overlay-bg.jpg)">
-        <div class="overlay-mf"></div>
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="copyright-box">
-                            <p class="copyright">&copy; Copyright <strong>Shohrukh DevFolio</strong>. All Rights Reserved</p>
-                            <div class="credits">
-                                Designed by <a href="">Shohrukh</a>
-                            </div>
+    {% block details %}
+
+    {% endblock %}
+
+    <!-- ======= Footer ======= -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="copyright-box">
+                        <p class="copyright">&copy; Copyright <strong>Shohrukh DevFolio</strong>. All Rights Reserved</p>
+                        <div class="credits">
+                        Designed by <a href="">SHohrukh</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </footer>
-    </section>
-    <!--/ Section Contact-footer End /-->
+        </div>
+    </footer><!-- End  Footer -->
 
     <div id="preloader"></div>
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <!-- JavaScript Libraries -->
     <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'lib/jquery/jquery-migrate.min.js' %}"></script>
-    <script src="{% static 'lib/popper/popper.min.js' %}"></script>
-    <script src="{% static 'lib/bootstrap/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
-    <script src="{% static 'lib/counterup/jquery.waypoints.min.js' %}"></script>
-    <script src="{% static 'lib/counterup/jquery.counterup.js' %}"></script>
-    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
-    <script src="{% static 'lib/lightbox/js/lightbox.min.js' %}"></script>
-    <script src="{% static 'lib/typed/typed.min.js' %}"></script>
-    <!-- Contact Form JavaScript File -->
-    <script src="{% static 'contactform/contactform.js' %}"></script>
+    <!-- Vendor JS Files -->
+    <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/typed.js/typed.umd.js' %}"></script>
+    <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
 
-    <!-- Template Main Javascript File -->
-    <script src="{% static 'js/main.js' %}"></script>
+    <!-- Template Main JS File -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+
 </body>
 </html>

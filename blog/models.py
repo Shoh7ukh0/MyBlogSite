@@ -104,9 +104,14 @@ class Portfolio(models.Model):
     images_2 = models.ImageField(upload_to='portfolio/')
     url = models.URLField()
     name = models.CharField(max_length=250)
+    client = models.CharField(max_length=250)
     info = models.CharField(max_length=250)
+    bio = models.TextField()
     project_date = models.DateField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
+
+    def get_absolute_url(self):
+        return reverse('blog:port_details', args=[self.id])
 
     def __str__(self):
         return self.name 

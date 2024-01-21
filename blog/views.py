@@ -9,6 +9,17 @@ from django.db.models import Count
 
 # Create your views here.
 
+def portfolio_details(request, id):
+    port = get_object_or_404(Portfolio, id=id)
+    portfolio = Portfolio.objects.all()
+
+    context = {
+        'port': port,
+        'portfolio': portfolio
+    }
+
+    return render(request, 'blog/post/portfolio-details.html', context)
+
 
 def post_list(request, tag_slug=None):
     portfolio = Portfolio.objects.all()

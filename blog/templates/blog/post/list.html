@@ -3,247 +3,180 @@
 {% block title %}My Blog{% endblock %}
 
 {% block content %}
-    <!--/ Intro Skew Star /-->
-    <div id="home" class="intro route bg-image" style="background-image: url(../../static/img/bg.jpg)">
+    <!-- ======= Hero Section ======= -->
+    <div id="hero" class="hero route bg-image" style="background-image: url(../../../static/assets/img/hero-bg.jpg)">
         <div class="overlay-itro"></div>
-        <div class="intro-content display-table">
-        <div class="table-cell">
+        <div class="hero-content display-table">
+            <div class="table-cell">
+                <div class="container">
+                    <!--<p class="display-6 color-d">Hello, world!</p>-->
+                    <h1 class="hero-title mb-4">I am Shohrukh</h1>
+                    <p class="hero-subtitle"><span class="typed" data-typed-items="Designer, Developer, Freelancer, Backend Developer"></span></p>
+                    <!-- <p class="pt-3"><a class="btn btn-primary btn js-scroll px-4" href="#about" role="button">Learn More</a></p> -->
+                </div>
+            </div>
+        </div>
+    </div><!-- End Hero Section -->
+    <main id="main">
+        <section id="about" class="about-mf sect-pt4 route">
             <div class="container">
-                <h1 class="intro-title mb-4">I am Shohrukh Uralov</h1>
-                <p class="intro-subtitle"><span class="text-slider-items">CEO DevFolio,Web Developer,Web Designer,Frontend Developer, Backend Developer,Graphic Designer</span><strong class="text-slider"></strong></p>
-                <p class="pt-3"><a class="btn btn-primary btn js-scroll px-4" href="" id="downloadButton" role="button">Resume Download</a></p>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="box-shadow-full">
+                            {% for a in about %}
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-md-5">
+                                                <div class="about-img">
+                                                    <img src="{{ a.image.url }}" class="img-fluid rounded b-shadow-a" alt="{{ a.name }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-7">
+                                                <div class="about-info">
+                                                    <p><span class="title-s">Name: </span> <span>{{ a.name }}</span></p>
+                                                    <p><span class="title-s">Profile: </span> <span>{{ a.work }}</span></p>
+                                                    <p><span class="title-s">Email: </span> <span>{{ a.email }}</span></p>
+                                                    <p><span class="title-s">Phone: </span> <span>+{{ a.phone }}</span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="skill-mf">
+                                            <p class="title-s">Skill</p>
+                                            <span>{{ a.skils }}</span> <span class="pull-right">85%</span>
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0"
+                                                aria-valuemax="100"></div>
+                                            </div>
+                                            <span>{{ a.skils_1 }}</span> <span class="pull-right">65%</span>
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="75" aria-valuemin="0"
+                                                aria-valuemax="100"></div>
+                                            </div>
+                                            <span>{{ a.skils_2 }}</span> <span class="pull-right">50%</span>
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                aria-valuemax="100"></div>
+                                            </div>
+                                            <span>{{ a.skils_3 }}</span> <span class="pull-right">65%</span>
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="90" aria-valuemin="0"
+                                                aria-valuemax="100"></div>
+                                            </div>
+                                            <span>{{ a.skils_4 }}</span> <span class="pull-right">65%</span>
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="90" aria-valuemin="0"
+                                                aria-valuemax="100"></div>
+                                            </div>
+                                            <span>{{ a.skils_5 }}</span> <span class="pull-right">65%</span>
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="90" aria-valuemin="0"
+                                                aria-valuemax="100"></div>
+                                            </div>
+                                            <span>{{ a.skils_6 }}</span> <span class="pull-right">65%</span>
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="90" aria-valuemin="0"
+                                                aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="about-me pt-4 pt-md-0">
+                                            <div class="title-box-2">
+                                                <h5 class="title-left">
+                                                    About me
+                                                </h5>
+                                            </div>
+                                            <p class="lead">
+                                                {{ a.body }}
+                                            </p>
+                                        </div>
+                                        {% for contact in contacts %}
+                                            <div class="col-md-6">
+                                                <div class="more-info">
+                                                    <ul class="list-ico">
+                                                        <li><span class="ion-ios-location"></span> {{ contact.location }}</li>
+                                                        <li><span class="ion-ios-telephone"></span> {{ a.phone }}</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="socials">
+                                                    <ul>
+                                                        <li><a href="{{ contact.facebook }}"><span class="ico-circle"><i style="font-size: 25px; position: relative; top: 1px;" class="bi bi-facebook"></i></span></a></li>
+                                                        <li><a href="{{ contact.instagram }}"><span class="ico-circle"><i style="font-size: 25px; position: relative; top: 1px;" class="bi bi-instagram"></i></span></a></li>
+                                                        <li><a href="{{ contact.telegram }}"><span class="ico-circle"><i style="font-size: 25px; position: relative; top: 1px;" class="bi bi-telegram"></i></span></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        </div>
-    </div>
-    <!--/ Intro Skew End /-->
-    <section id="about" class="about-mf sect-pt4 route">
-        <div class="container">
+        </section>
+
+        <div class="section-counter paralax-mf bg-image" style="background-image: url(../../static/img/counters-bg.jpg)">
+            <div class="overlay-mf"></div>
+            <div class="container">
             <div class="row">
-                <div class="col-sm-12">
-                    <div class="box-shadow-full">
-                        {% for a in about %}
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="row">
-                                        <div class="col-sm-6 col-md-5">
-                                            <div class="about-img">
-                                                <img src="{{ a.image.url }}" class="img-fluid rounded b-shadow-a" alt="{{ a.name }}">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-7">
-                                            <div class="about-info">
-                                                <p><span class="title-s">Name: </span> <span>{{ a.name }}</span></p>
-                                                <p><span class="title-s">Profile: </span> <span>{{ a.work }}</span></p>
-                                                <p><span class="title-s">Email: </span> <span>{{ a.email }}</span></p>
-                                                <p><span class="title-s">Phone: </span> <span>+{{ a.phone }}</span></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="skill-mf">
-                                        <p class="title-s">Skill</p>
-                                        <span>{{ a.skils }}</span> <span class="pull-right">85%</span>
-                                        <div class="progress">
-                                            <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0"
-                                            aria-valuemax="100"></div>
-                                        </div>
-                                        <span>{{ a.skils_1 }}</span> <span class="pull-right">65%</span>
-                                        <div class="progress">
-                                            <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="75" aria-valuemin="0"
-                                            aria-valuemax="100"></div>
-                                        </div>
-                                        <span>{{ a.skils_2 }}</span> <span class="pull-right">50%</span>
-                                        <div class="progress">
-                                            <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                            aria-valuemax="100"></div>
-                                        </div>
-                                        <span>{{ a.skils_3 }}</span> <span class="pull-right">65%</span>
-                                        <div class="progress">
-                                            <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="90" aria-valuemin="0"
-                                            aria-valuemax="100"></div>
-                                        </div>
-                                        <span>{{ a.skils_4 }}</span> <span class="pull-right">65%</span>
-                                        <div class="progress">
-                                            <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="90" aria-valuemin="0"
-                                            aria-valuemax="100"></div>
-                                        </div>
-                                        <span>{{ a.skils_5 }}</span> <span class="pull-right">65%</span>
-                                        <div class="progress">
-                                            <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="90" aria-valuemin="0"
-                                            aria-valuemax="100"></div>
-                                        </div>
-                                        <span>{{ a.skils_6 }}</span> <span class="pull-right">65%</span>
-                                        <div class="progress">
-                                            <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="90" aria-valuemin="0"
-                                            aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="about-me pt-4 pt-md-0">
-                                        <div class="title-box-2">
-                                            <h5 class="title-left">
-                                                About me
-                                            </h5>
-                                        </div>
-                                        <p class="lead">
-                                            {{ a.body }}
-                                        </p>
-                                    </div>
-                                    {% for contact in contacts %}
-                                        <div class="col-md-6">
-                                            <div class="more-info">
-                                                <ul class="list-ico">
-                                                    <li><span class="ion-ios-location"></span> {{ contact.location }}</li>
-                                                    <li><span class="ion-ios-telephone"></span> {{ a.phone }}</li>
-                                                </ul>
-                                            </div>
-                                            <div class="socials">
-                                                <ul>
-                                                    <li><a href="{{ contact.facebook }}"><span class="ico-circle"><i style="font-size: 25px; position: relative; top: 1px;" class="bi bi-facebook"></i></span></a></li>
-                                                    <li><a href="{{ contact.instagram }}"><span class="ico-circle"><i style="font-size: 25px; position: relative; top: 1px;" class="bi bi-instagram"></i></span></a></li>
-                                                    <li><a href="{{ contact.telegram }}"><span class="ico-circle"><i style="font-size: 25px; position: relative; top: 1px;" class="bi bi-telegram"></i></span></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    {% endfor %}
-                                </div>
+                    <div class="col-sm-3 col-lg-3">
+                        <div class="counter-box">
+                            <div class="counter-ico">
+                                <span class="ico-circle"><i class="ion-checkmark-round"></i></span>
                             </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="section-counter paralax-mf bg-image" style="background-image: url(../../static/img/counters-bg.jpg)">
-        <div class="overlay-mf"></div>
-        <div class="container">
-        <div class="row">
-                <div class="col-sm-3 col-lg-3">
-                    <div class="counter-box">
-                        <div class="counter-ico">
-                            <span class="ico-circle"><i class="ion-checkmark-round"></i></span>
-                        </div>
-                        <div class="counter-num">
-                            <p class="counter">5</p>
-                            <span class="counter-text">WORKS COMPLETED</span>
+                            <div class="counter-num">
+                                <p class="counter">5</p>
+                                <span class="counter-text">WORKS COMPLETED</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-3 col-lg-3">
-                    <div class="counter-box pt-4 pt-md-0">
-                        <div class="counter-ico">
-                            <span class="ico-circle"><i class="ion-ios-calendar-outline"></i></span>
-                        </div>
-                        <div class="counter-num">
-                            <p class="counter">1</p>
-                            <span class="counter-text">YEARS OF EXPERIENCE</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3 col-lg-3">
-                    <div class="counter-box pt-4 pt-md-0">
-                        <div class="counter-ico">
-                            <span class="ico-circle"><i class="ion-ios-people"></i></span>
-                        </div>
-                        <div class="counter-num">
-                            <p class="counter">10</p>
-                            <span class="counter-text">TOTAL CLIENTS</span>
+                    <div class="col-sm-3 col-lg-3">
+                        <div class="counter-box pt-4 pt-md-0">
+                            <div class="counter-ico">
+                                <span class="ico-circle"><i class="ion-ios-calendar-outline"></i></span>
+                            </div>
+                            <div class="counter-num">
+                                <p class="counter">1</p>
+                                <span class="counter-text">YEARS OF EXPERIENCE</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-3 col-lg-3">
-                    <div class="counter-box pt-4 pt-md-0">
-                        <div class="counter-ico">
-                            <span class="ico-circle"><i class="ion-ribbon-a"></i></span>
+                    <div class="col-sm-3 col-lg-3">
+                        <div class="counter-box pt-4 pt-md-0">
+                            <div class="counter-ico">
+                                <span class="ico-circle"><i class="ion-ios-people"></i></span>
+                            </div>
+                            <div class="counter-num">
+                                <p class="counter">10</p>
+                                <span class="counter-text">TOTAL CLIENTS</span>
+                            </div>
                         </div>
-                        <div class="counter-num">
-                            <p class="counter">2</p>
-                            <span class="counter-text">AWARD WON</span>
+                    </div>
+                    <div class="col-sm-3 col-lg-3">
+                        <div class="counter-box pt-4 pt-md-0">
+                            <div class="counter-ico">
+                                <span class="ico-circle"><i class="ion-ribbon-a"></i></span>
+                            </div>
+                            <div class="counter-num">
+                                <p class="counter">2</p>
+                                <span class="counter-text">AWARD WON</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!--/ Section Portfolio Star /-->
-    <section id="work" class="portfolio-mf sect-pt4 route">
-        <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="title-box text-center">
-                    <h3 class="title-a">
-                        Portfolio
-                    </h3>
-                    <p class="subtitle-a">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    </p>
-                    <div class="line-mf"></div>
-                </div>
-            </div>
-            </div>
-            <div class="row">
-                <div class="row portfolio-container">
-                    {% for port in portfolio %}
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                      <div class="portfolio-wrap">
-                        <img src="{{ port.images.url }}" class="img-fluid" alt="{{ port.name }}">
-                        <div class="portfolio-info">
-                          <h4>{{ port.name }}</h4>
-                          <p>{{ port.info }}</p>
-                          <div class="portfolio-links">
-                            <a href="{{ port.images.url }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bi bi-plus-circle"></i></a>
-                            <a href="{{ port.url }}" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bi bi-link-45deg"></i></a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    {% endfor %}
-                  </div>               
-            </div>
-        </div>
-    </section>
-    <!--/ Section Portfolio End /-->
-
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-    
-          <div class="section-title">
-            <h2>Portfolio</h2>
-            <p>My Works</p>
-          </div>
-    
-          <div class="row portfolio-container">
-            {% for port in portfolio %}
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-              <div class="portfolio-wrap">
-                <img src="{{ port.images.url }}" class="img-fluid" alt="{{ port.name }}">
-                <div class="portfolio-info">
-                  <h4>{{ port.name }}</h4>
-                  <p>{{ port.info }}</p>
-                  <div class="portfolio-links">
-                    <a href="{{ port.images.url }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                    <a href="{{ port.url }}" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {% endfor %}
-          </div>
-    
-        </div>
-      </section><!-- End Portfolio Section -->
-
-    <!--/ Section Blog Star /-->
-    <section id="blog" class="blog-mf sect-pt4 route">
-        <div class="container">
+        <!--/ Section Portfolio Star /-->
+        <section id="work" class="portfolio-mf sect-pt4 route">
+            <div class="container">
             <div class="row">
                 <div class="col-sm-12">
                     <div class="title-box text-center">
                         <h3 class="title-a">
-                            Blog
+                            Portfolio
                         </h3>
                         <p class="subtitle-a">
                             Lorem ipsum, dolor sit amet consectetur adipisicing elit.
@@ -251,48 +184,98 @@
                         <div class="line-mf"></div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="row">
-                {% for post in posts %}
+                </div>
+                <div class="row">
+                    {% for port in portfolio %}
                     <div class="col-md-4">
-                        <div class="card card-blog">
-                            <div class="card-img">
-                                <a href="{{ post.get_absolute_url }}"><img style="border-radius: 2px;" src="{{ post.images.url }}" alt="{{ post.title }}" class="img-fluid"></a>
-                            </div>
-                            <div class="card-body">
-                                {% for tag in post.tags.all %}
-                                    <div class="card-category-box">
-                                        <div class="card-category">
-                                            <a href="{% url 'blog:post_list_by_tag' tag.slug %}">
-                                                <h6 class="category">{{ tag.name }}</h6>
-                                            </a>
+                        <div class="work-box">
+                            <a href="#!" data-lightbox="gallery-mf">
+                                <div class="work-img">
+                                    <img src="{{ port.images.url }}" alt="{{ port.name }}" class="img-fluid">
+                                </div>
+                                <div class="work-content">
+                                    <div class="row">
+                                    <div class="col-sm-8">
+                                        <h2 class="w-title">{{ port.name }}</h2>
+                                        <div class="w-more">
+                                        <span class="w-ctegory">{{ port.info }}</span> / <span class="w-date">{{ port.created }}</span>
                                         </div>
                                     </div>
-                                {% endfor %}
-                                <h3 class="card-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
-                                <p class="card-description">
-                                    {{ post.body|markdown|truncatewords_html:30 }}
-                                </p>
-                            </div>
-                            <div class="card-footer">
-                                <div class="post-author">
-                                    <a href="#">
-                                        <span class="author">{{ post.author }}</span>
-                                    </a>
+                                    <div class="col-sm-4">
+                                        <div class="w-like">
+                                            <a href="{{ port.get_absolute_url }}"><span class="ion-ios-plus-outline"></span></a>
+                                        </div>
+                                    </div>
+                                    </div>
                                 </div>
-                                <div class="post-date">
-                                    <span class="ion-ios-clock-outline"></span> {{ post.publish }}
+                            </a>
+                        </div>
+                    </div> 
+                    {% endfor %}               
+                </div>
+            </div>
+        </section>
+        <!--/ Section Portfolio End /-->
+
+        <!--/ Section Blog Star /-->
+        <section id="blog" class="blog-mf sect-pt4 route">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="title-box text-center">
+                            <h3 class="title-a">
+                                Blog
+                            </h3>
+                            <p class="subtitle-a">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                            </p>
+                            <div class="line-mf"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    {% for post in posts %}
+                        <div class="col-md-4">
+                            <div class="card card-blog">
+                                <div class="card-img">
+                                    <a href="{{ post.get_absolute_url }}"><img style="border-radius: 2px;" src="{{ post.images.url }}" alt="{{ post.title }}" class="img-fluid"></a>
+                                </div>
+                                <div class="card-body">
+                                    {% for tag in post.tags.all %}
+                                        <div class="card-category-box">
+                                            <div class="card-category">
+                                                <a href="{% url 'blog:post_list_by_tag' tag.slug %}">
+                                                    <h6 class="category">{{ tag.name }}</h6>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                    <h3 class="card-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                                    <p class="card-description">
+                                        {{ post.body|markdown|truncatewords_html:30 }}
+                                    </p>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="post-author">
+                                        <a href="#">
+                                            <span class="author">{{ post.author }}</span>
+                                        </a>
+                                    </div>
+                                    <div class="post-date">
+                                        <span class="ion-ios-clock-outline"></span> {{ post.publish }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                </div>
+                {% include "pagination.html" with page=posts  %}
             </div>
-            {% include "pagination.html" with page=posts  %}
-        </div>
-    </section>
-    <!--/ Section Blog End /-->
+        </section>
+        <!--/ Section Blog End /-->
+
+    </main>
 
     <script>
         document.getElementById('downloadButton').addEventListener('click', function() {
