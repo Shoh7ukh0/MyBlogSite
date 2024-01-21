@@ -34,7 +34,6 @@
     <!-- ======= Portfolio Details Section ======= -->
     <section id="portfolio-details" class="portfolio-details">
       <div class="container">
-        {% for p in portfolio %}
         <div class="row gy-4">
 
           <div class="col-lg-8">
@@ -42,15 +41,15 @@
               <div class="swiper-wrapper align-items-center">
 
                 <div class="swiper-slide">
-                  <img src="{{ p.images.url }}" alt="">
+                  <img src="{{ port.images.url }}" alt="">
                 </div>
 
                 <div class="swiper-slide">
-                  <img src="{{ p.images_1.url }}" alt="">
+                  <img src="{{ port.images_1.url }}" alt="">
                 </div>
 
                 <div class="swiper-slide">
-                  <img src="{{ p.images_2.url }}" alt="">
+                  <img src="{{ port.images_2.url }}" alt="">
                 </div>
 
               </div>
@@ -62,16 +61,16 @@
             <div class="portfolio-info">
               <h3>Project information</h3>
               <ul>
-                <li><strong>Category</strong>: {{ p.info }}</li>
-                <li><strong>Client</strong>: {{ p.client }}</li>
-                <li><strong>Project date</strong>: {{ p.project_date }}</li>
-                <li><strong>Project URL</strong>: <a href="{{ p.url }}">{{ p.url }}</a></li>
+                <li><strong>Category</strong>: {{ port.info }}</li>
+                <li><strong>Client</strong>: {{ port.client }}</li>
+                <li><strong>Project date</strong>: {{ port.project_date }}</li>
+                <li><strong>Project URL</strong>: <a href="{{ port.url }}">{{ port.url }}</a></li>
               </ul>
             </div>
             <div class="portfolio-description">
               <h2>This is an example of portfolio detail</h2>
               <p>
-                {{ p.bio }}
+                {{ port.bio }}
               </p>
             </div>
           </div>
@@ -79,7 +78,6 @@
         </div>
 
       </div>
-      {% endfor %}
     </section><!-- End Portfolio Details Section -->
 
   </main><!-- End #main -->

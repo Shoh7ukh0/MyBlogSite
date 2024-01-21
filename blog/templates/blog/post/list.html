@@ -12,7 +12,11 @@
                     <!--<p class="display-6 color-d">Hello, world!</p>-->
                     <h1 class="hero-title mb-4">I am Shohrukh</h1>
                     <p class="hero-subtitle"><span class="typed" data-typed-items="Designer, Developer, Freelancer, Backend Developer"></span></p>
-                    <p class="pt-3"><a class="btn btn-primary btn js-scroll px-4" href="#!" id="downloadButton" role="button">CV Download</a></p>
+                    <div class="d-flex justify-content-center">
+                        <p class="pt-3"><a class="btn btn-primary btn js-scroll px-4" id="downloadButton" role="button"><i class="bi bi-cloud-arrow-down"></i> CV Download</a></p>
+                        <p style="margin-left: 10px;" class="pt-3"><a class="btn btn-outline-success js-scroll px-4" href="#blog" role="button">Read Blog</a></p>
+                        <p style="margin-left: 10px;" class="pt-3"><a class="btn btn-outline-primary js-scroll px-4" href="#about" role="button">About me</a></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -96,7 +100,7 @@
                                                 <div class="more-info">
                                                     <ul class="list-ico">
                                                         <li><i class="bi bi-geo-alt-fill"></i> {{ contact.location }}</li>
-                                                        <li><i class="bi bi-phone-fill"></i> {{ a.phone }}</li>
+                                                        <li><i class="bi bi-phone-fill"></i> +{{ a.phone }}</li>
                                                     </ul>
                                                 </div>
                                                 <div class="socials">
@@ -173,46 +177,53 @@
         <!--/ Section Portfolio Star /-->
         <section id="work" class="portfolio-mf sect-pt4 route">
             <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="title-box text-center">
-                        <h3 class="title-a">
-                            Portfolio
-                        </h3>
-                        <p class="subtitle-a">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                        </p>
-                        <div class="line-mf"></div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="title-box text-center">
+                            <h3 class="title-a">
+                                Portfolio
+                            </h3>
+                            <p class="subtitle-a">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                            </p>
+                            <div class="line-mf"></div>
+                        </div>
                     </div>
                 </div>
-                </div>
                 <div class="row">
-                    {% for port in portfolio %}
-                    <div class="col-md-4">
-                        <div class="work-box">
-                            <a href="#!" data-lightbox="gallery-mf">
-                                <div class="work-img">
-                                    <img src="{{ port.images.url }}" alt="{{ port.name }}" class="img-fluid">
-                                </div>
-                                <div class="work-content">
-                                    <div class="row">
-                                    <div class="col-sm-8">
-                                        <h2 class="w-title">{{ port.name }}</h2>
-                                        <div class="w-more">
-                                        <span class="w-ctegory">{{ port.info }}</span> / <span class="w-date">{{ port.created }}</span>
+                    {% if portfolio %}
+                        {% for port in portfolio %}
+                            <div class="col-md-4">
+                                <div class="work-box">
+                                    <a href="{{ port.images.url }}" data-gallery="portfolioGallery" class="portfolio-lightbox">
+                                        <div class="work-img">
+                                            <img src="{{ port.images.url }}" alt="{{ port.name }}" class="img-fluid">
+                                        </div>
+                                    </a>
+                                    <div class="work-content">
+                                        <div class="row">
+                                            <div class="col-sm-8">
+                                                <h2 class="w-title">{{ port.name }}</h2>
+                                                <div class="w-more">
+                                                    <span class="w-ctegory">{{ port.info }}</span> / <span class="w-date">{{ port.created }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="w-like">
+                                                    <a href="{{ port.get_absolute_url }}"> <span class="bi bi-plus-circle"></span></a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-4">
-                                        <div class="w-like">
-                                            <a href="{{ port.get_absolute_url }}"><i class="bi bi-plus-circle"></i></a>
-                                        </div>
-                                    </div>
-                                    </div>
                                 </div>
-                            </a>
-                        </div>
-                    </div> 
-                    {% endfor %}               
+                            </div> 
+                        {% endfor %}   
+                    {% else %}
+                        <div style="text-align: center;" class="content">
+                            <i style="font-size: 5em;" class="bi bi-clipboard-x"></i>
+                            <p>You have no Portfolios yet!</p>
+                        </div>           
+                    {% endif %}
                 </div>
             </div>
         </section>
@@ -236,40 +247,47 @@
                 </div>
                 
                 <div class="row">
-                    {% for post in posts %}
-                        <div class="col-md-4">
-                            <div class="card card-blog">
-                                <div class="card-img">
-                                    <a href="{{ post.get_absolute_url }}"><img style="border-radius: 2px;" src="{{ post.images.url }}" alt="{{ post.title }}" class="img-fluid"></a>
-                                </div>
-                                <div class="card-body">
-                                    {% for tag in post.tags.all %}
-                                        <div class="card-category-box">
-                                            <div class="card-category">
-                                                <a href="{% url 'blog:post_list_by_tag' tag.slug %}">
-                                                    <h6 class="category">{{ tag.name }}</h6>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    {% endfor %}
-                                    <h3 class="card-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
-                                    <p class="card-description">
-                                        {{ post.body|markdown|truncatewords_html:30 }}
-                                    </p>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="post-author">
-                                        <a href="#">
-                                            <span class="author">{{ post.author }}</span>
-                                        </a>
+                    {% if posts %}
+                        {% for post in posts %}
+                            <div class="col-md-4">
+                                <div class="card card-blog">
+                                    <div class="card-img">
+                                        <a href="{{ post.get_absolute_url }}"><img style="border-radius: 2px;" src="{{ post.images.url }}" alt="{{ post.title }}" class="img-fluid"></a>
                                     </div>
-                                    <div class="post-date">
-                                        <span class="ion-ios-clock-outline"></span> {{ post.publish }}
+                                    <div class="card-body">
+                                        {% for tag in post.tags.all %}
+                                            <div class="card-category-box">
+                                                <div class="card-category">
+                                                    <a href="{% url 'blog:post_list_by_tag' tag.slug %}">
+                                                        <h6 class="category">{{ tag.name }}</h6>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                        <h3 class="card-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                                        <p class="card-description">
+                                            {{ post.body|markdown|truncatewords_html:30 }}
+                                        </p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="post-author">
+                                            <a href="#">
+                                                <span class="author">{{ post.author }}</span>
+                                            </a>
+                                        </div>
+                                        <div class="post-date">
+                                            <span class="ion-ios-clock-outline"></span> {{ post.publish }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    {% endfor %}
+                        {% endfor %}
+                    {% else %}
+                        <div style="text-align: center;" class="content">
+                            <i style="font-size: 5em;" class="bi bi-database-x"></i>
+                            <p>You have no Blogs yet!</p>
+                        </div>           
+                    {% endif %}
                 </div>
                 {% include "pagination.html" with page=posts  %}
             </div>
