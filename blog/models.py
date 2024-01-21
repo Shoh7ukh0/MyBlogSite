@@ -97,3 +97,15 @@ class Comment(models.Model):
     
     def __str__(self):
         return f"Comment by {self.name} on {self.post}"
+    
+class Portfolio(models.Model):
+    images = models.ImageField(upload_to='portfolio/')
+    images_1 = models.ImageField(upload_to='portfolio/')
+    images_2 = models.ImageField(upload_to='portfolio/')
+    url = models.URLField()
+    name = models.CharField(max_length=250)
+    info = models.CharField(max_length=250)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name 

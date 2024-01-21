@@ -1,20 +1,17 @@
 from django.shortcuts import render, get_object_or_404
-# from django.http import Http404
-from .models import Post, MyAbout, Contact
+from .models import Post, MyAbout, Contact, Portfolio
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-# from django.views.generic import ListView
 from .forms import EmailPostForm, CommentForm, SearchForm
 from django.core.mail import send_mail
 from django.views.decorators.http import require_POST
 from taggit.models import Tag
 from django.db.models import Count
-from django.contrib.postgres.search import SearchQuery, SearchVector, SearchRank
-from django.contrib.postgres.search import TrigramSimilarity
 
 # Create your views here.
 
 
 def post_list(request, tag_slug=None):
+    portfolio = Portfolio.objects.all()
     about = MyAbout.objects.all()
     post_list = Post.published.all()
     contacts = Contact.objects.all()
@@ -40,6 +37,7 @@ def post_list(request, tag_slug=None):
         posts = paginator.page(paginator.num_pages)
 
     context = {
+        'portfolio': portfolio,
         'about': about,
         'posts': posts,
         'tag': tag,
